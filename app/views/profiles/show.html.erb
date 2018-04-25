@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2><%= @user.username %>'s Profile</h2>
+  <h4>Profile Type</h4>
+  <% if @user.has_role?(:stylist) %>
+    <p>Stylist</p>
+  <% elsif @user.has_role?(:scrub) %>
+    <p>Scrub</p>
+  <% end %>
+  <p><%= @user.bio %></p>
+  <p><%= @user.is_stylist %></p>
+  
+  <%= link_to "Edit", edit_profile_path(@user) %>
+
+</body>
+</html>

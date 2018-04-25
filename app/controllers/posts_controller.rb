@@ -42,10 +42,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def can_create?
-    self.has_role?(:admin) || self.has_role?(:author)
-  end
-
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update

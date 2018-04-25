@@ -1,0 +1,41 @@
+<%= form_with(model: user, local: true, url: profile_path(user)) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile_pic %>
+    <%= form.text_field :profile_pic %>
+  </div>
+
+    <div class="field">
+      <%= form.label :is_stylist, style: "#{user.has_role?(:stylist) || user.has_role?(:scrub) ? 'display:none' : 'visibility:visible' }"%><br />
+      <%= form.label :is_stylist, "Stylist" %>
+      <%= form.radio_button :is_stylist, true %>
+      <%= form.label :is_stylist, "Scrub" %>
+      <%= form.radio_button :is_stylist, false %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
