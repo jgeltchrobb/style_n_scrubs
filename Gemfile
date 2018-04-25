@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-04-25 18:03:51 +1000 by jordan:
 gem "devise", "~> 4.4"
+
+# Added at 2018-04-25 18:23:16 +1000 by jordan:
+gem "rolify", "~> 5.2"
