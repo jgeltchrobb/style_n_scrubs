@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_stylists
 
   # GET /posts
   # GET /posts.json
@@ -10,6 +11,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def stylists
+    @users = User.all
   end
 
   # GET /posts/new
@@ -84,5 +89,11 @@ class PostsController < ApplicationController
     def not_authorised
       flash[:notice] = "You are not authorised!"
       redirect_to posts_path
+    end
+
+    def find_stylists
+    @users = User.all
+    @stylists = @users.with_role(:stylist)
+
     end
 end

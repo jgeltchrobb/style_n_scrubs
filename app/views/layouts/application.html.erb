@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= link_to 'Home', posts_path %> | 
+    <%= link_to "Stylists", stylists_path %>
     <% if user_signed_in? %>
       <%= link_to('Your profile', profile_path(current_user)) %>
     <% end %>

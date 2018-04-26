@@ -19,7 +19,7 @@
         <td><%= post.user.email %></td>
         <td><%= post.content %></td>        
         <td><%= post.image %></td>
-        <td><%= post.is_stylist %></td>
+        <td><%= post.user.is_stylist %></td>
         <td><%= link_to 'Show', post %></td>
         <% if current_user.can_update?(post) %>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -29,6 +29,7 @@
         <% end %>
       </tr>
     <% end %>
+    
   </tbody>
 </table>
 
