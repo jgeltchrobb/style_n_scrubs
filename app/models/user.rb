@@ -8,9 +8,20 @@ class User < ApplicationRecord
   has_many :posts
 
   after_create :set_role
+  after_update :set_account_type_role
 
   def set_role
     add_role :author
+  end
+
+  def set_account_type_role
+    if self.is_stylist == true
+      self.add_role :stylist
+      self.remove_role :scrub
+    elsif self.is_stylist == false
+      self.add_role :scrub
+      self.remove_role :stylist
+    end
   end
 
   def can_create?

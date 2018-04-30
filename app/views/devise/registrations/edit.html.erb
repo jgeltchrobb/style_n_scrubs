@@ -31,6 +31,28 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile_pic %>
+    <%= f.text_field :profile_pic %>
+  </div>
+
+    <div class="field">
+      <%= f.radio_button :is_stylist, true %>
+      <%= f.label :stylist, "Stylist" %>
+      <%= f.radio_button :is_stylist, false %>
+      <%= f.label :scrub, "Scrub" %>
+    </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
