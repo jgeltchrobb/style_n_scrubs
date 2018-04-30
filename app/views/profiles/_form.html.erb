@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true, url: profile_path(user)) do |form| %>
+<%= form_with(model: user, local: true, url: profile_path, method: :put) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -27,11 +27,10 @@
   </div>
 
     <div class="field">
-      <%= form.label :is_stylist, style: "#{user.has_role?(:stylist) || user.has_role?(:scrub) ? 'display:none' : 'visibility:visible' }"%><br />
-      <%= form.label :is_stylist, "Stylist" %>
       <%= form.radio_button :is_stylist, true %>
-      <%= form.label :is_stylist, "Scrub" %>
+      <%= form.label :stylist, "Stylist" %>
       <%= form.radio_button :is_stylist, false %>
+      <%= form.label :scrub, "Scrub" %>
     </div>
 
   <div class="actions">

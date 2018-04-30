@@ -17,7 +17,9 @@
   <p><%= @user.bio %></p>
   <p><%= @user.is_stylist %></p>
   
-  <%= link_to "Edit", edit_profile_path(@user) %>
+  <% if @user == current_user %>
+    <%= link_to "Edit", edit_user_registration_path %>
+  <% end %>
 
 </body>
 </html>

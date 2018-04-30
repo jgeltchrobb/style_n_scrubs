@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     @users = User.all
   end
 
+  def scrubs
+    @users = User.all
+  end
+
   # GET /posts/new
   def new
     not_authorised and return unless current_user.can_create?
@@ -33,8 +37,9 @@ class PostsController < ApplicationController
   def create
     not_authorised and return unless current_user.can_create?
 
-      @post = Post.new(post_params)
-      @post.user = current_user
+    @post = Post.new(post_params)
+    @post.user = current_user
+    assign_owner_role
 
     respond_to do |format|
       if @post.save
@@ -94,6 +99,13 @@ class PostsController < ApplicationController
     def find_stylists
     @users = User.all
     @stylists = @users.with_role(:stylist)
+    end 
 
+    def assign_owner_role
+      if @post.user.has_role?(:stylist)
+        @post.owner_role = "stylist"
+      elsif @post.user.has_role?(:scrub)
+        @post.owner_role = "scrub"
+      end
     end
 end
